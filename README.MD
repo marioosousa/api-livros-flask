@@ -9,6 +9,20 @@ Esta API foi desenvolvida em Python com Flask para disponibilizar os dados livro
 - Python
 - Flask
 
+## Estrutura
+
+```text
+frontend-livros/
+├── index.html
+├── package.json
+├── vite.config.js
+├── .gitignore
+└── src/
+    ├── App.jsx
+    ├── App.css
+    └── main.jsx
+```
+
 ## Instalação das dependências
 
 Abra o Prompt de Comando na pasta do projeto e execute:
@@ -17,6 +31,7 @@ Abra o Prompt de Comando na pasta do projeto e execute:
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
+```
 
 ## Execução da aplicação
 
@@ -24,6 +39,8 @@ Com o ambiente virtual ativado, execute:
 
 ```cmd
 python app.py
+```
+
 
 ## Rota disponível
 
@@ -32,6 +49,7 @@ Endereço: http://127.0.0.1:5000/livros
 
 ## Exemplo de resposta
 
+```
 {
   "livros": [
     {
@@ -54,4 +72,4 @@ Endereço: http://127.0.0.1:5000/livros
     }
   ]
 }
-
+```

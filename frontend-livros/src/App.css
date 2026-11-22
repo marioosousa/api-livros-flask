@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #1f2937;
+  background: #f3f6fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button {
+  font: inherit;
+}
+
+.pagina {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px 24px;
+  background:
+    radial-gradient(ellipse at top left, #dbeafe 0, transparent 38%),
+    #f3f6fb;
+}
+
+.painel {
+  width: min(100%, 760px);
+  padding: 40px;
+  border: 1px solid #e3eaf4;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 18px 50px rgb(31 41 55 / 8%);
+}
+
+.cabecalho {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.etiqueta {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #eaf2ff;
+  color: #2563eb;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.cabecalho h1,
+.resultado-cabecalho h2,
+.livro h3 {
+  font-family: 'Manrope', sans-serif;
+}
+
+.cabecalho h1 {
+  margin: 0;
+  color: #172554;
+  font-size: clamp(2rem, 5vw, 2.7rem);
+  letter-spacing: -0.04em;
+}
+
+.cabecalho p {
+  margin: 12px 0 0;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.acoes {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.botao-buscar,
+.botao-voltar {
+  min-height: 46px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.botao-buscar {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 8px 18px rgb(37 99 235 / 22%);
+}
+
+.botao-buscar:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: #1d4ed8;
+  box-shadow: 0 12px 22px rgb(37 99 235 / 28%);
+}
+
+.botao-buscar:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.botao-voltar {
+  border: 1px solid #dbe3ef;
+  background: #fff;
+  color: #334155;
+}
+
+.botao-voltar:hover {
+  transform: translateY(-2px);
+  background: #f8fafc;
+}
+
+.botao-buscar:focus-visible,
+.botao-voltar:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+.orientacao,
+.mensagem {
+  margin: 24px 0 0;
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.orientacao,
+.mensagem.vazio {
+  background: #f8fafc;
+  color: #64748b;
+}
+
+.mensagem.carregando {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.mensagem.erro {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.resultado {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e8edf4;
+}
+
+.resultado-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.resultado-cabecalho h2 {
+  margin: 0;
+  color: #172554;
+  font-size: 1.25rem;
+}
+
+.contador {
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.lista-livros {
+  display: grid;
+  gap: 12px;
+}
+
+.livro {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid #e5eaf2;
+  border-radius: 16px;
+  background: #fff;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.livro:hover {
+  transform: translateY(-2px);
+  border-color: #bfdbfe;
+  box-shadow: 0 8px 20px rgb(15 23 42 / 6%);
+}
+
+.livro-id {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+  border-radius: 12px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.livro-dados h3 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 1.05rem;
+}
+
+.livro-dados p {
+  margin: 4px 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.livro-dados strong {
+  color: #334155;
+}
+
+.rodape {
+  margin-top: 24px;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .pagina {
+    padding: 24px 14px;
+  }
+
+  .painel {
+    padding: 26px 18px;
+    border-radius: 18px;
+  }
+
+  .resultado-cabecalho {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .livro {
+    padding: 15px;
+  }
+}

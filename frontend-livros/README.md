@@ -1,16 +1,113 @@
-# React + Vite
+# Front-end do Catálogo de Livros
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web desenvolvida com **React** e **Vite** para consultar e exibir os livros fornecidos pela API Flask deste repositório.
 
-Currently, two official plugins are available:
+A tela permite iniciar a consulta, visualizar os livros com título, autor e ano de publicação, retornar ao início e receber mensagens quando a API estiver indisponível ou não houver livros cadastrados.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tecnologias
 
-## React Compiler
+- React
+- Vite
+- JavaScript
+- CSS
+- API Flask
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Pré-requisitos
 
-## Expanding the ESLint configuration
+- Node.js e npm instalados;
+- Python instalado para executar a API;
+- dependências do backend instaladas conforme o [README principal](../README.MD).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Como executar
+
+O front-end depende da API Flask. Execute o backend e o front-end em terminais separados.
+
+### 1. Inicie a API Flask
+
+Na pasta raiz do repositório:
+
+```bash
+python -m venv venv
+```
+
+Ative o ambiente virtual:
+
+**Windows (Prompt de Comando):**
+
+```cmd
+venv\Scripts\activate
+```
+
+**Linux ou macOS:**
+
+```bash
+source venv/bin/activate
+```
+
+Instale as dependências e inicie a API:
+
+```bash
+pip install -r requirements.txt
+python app.py
+```
+
+A API ficará disponível em `http://127.0.0.1:5000`.
+
+### 2. Inicie o front-end
+
+Em outro terminal, acesse a pasta do front-end:
+
+```bash
+cd frontend-livros
+npm ci
+npm run dev
+```
+
+Abra no navegador o endereço informado pelo Vite, geralmente `http://localhost:5173`.
+
+## Como funciona a consulta
+
+Ao clicar em **Buscar Livros**, a aplicação envia uma solicitação HTTP GET para `/api/livros`. Durante o desenvolvimento, o Vite encaminha essa solicitação para a rota `/livros` da API Flask em `http://127.0.0.1:5000`.
+
+A API retorna os livros no formato:
+
+```json
+{
+  "livros": [
+    {
+      "id": 1,
+      "titulo": "Dom Casmurro",
+      "autor": "Machado de Assis",
+      "ano": 1899
+    }
+  ]
+}
+```
+
+Se a API não estiver em execução ou a resposta não tiver o formato esperado, a interface apresenta uma mensagem de erro. Se a consulta for concluída sem livros, a tela informa que o catálogo está vazio.
+
+## Comandos disponíveis
+
+Execute estes comandos na pasta `frontend-livros`:
+
+| Comando | Descrição |
+| --- | --- |
+| `npm run dev` | Inicia o servidor de desenvolvimento do Vite. |
+| `npm run build` | Gera os arquivos de produção na pasta `dist`. |
+| `npm run preview` | Disponibiliza uma prévia local da versão de produção. |
+| `npm run lint` | Analisa os arquivos com ESLint. |
+
+## Estrutura do diretório
+
+```text
+frontend-livros/
+├── index.html
+├── package.json
+├── package-lock.json
+├── vite.config.js
+└── src/
+    ├── App.jsx       # Interface e consulta à API
+    ├── App.css       # Estilos da tela
+    ├── index.css     # Estilos globais
+    └── main.jsx      # Inicialização do React
+```
